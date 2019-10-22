@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
             "Dean office clark",
             "Head of the department",
             "HOD clark",
-            "student"
+            "Student"
         );
         
         foreach ($user_roles as $key => $value) {

@@ -15,8 +15,8 @@ class CreateUserAssingedRolesTable extends Migration
     {
         Schema::create('user_assinged_roles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('userId');
-            $table->string('userRoleId');
+            $table->string('user_id');
+            $table->string('user_roles_id');
             $table->timestamps();
         });
     }
