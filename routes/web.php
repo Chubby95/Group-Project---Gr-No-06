@@ -18,4 +18,18 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
-Route::get('/student/home', 'HomeController@index')->name('home')->middleware('verified');
+
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('verified');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('icons', ['as' => 'pages.icons', 'uses' => 'PageController@icons']);
+    Route::get('notifications', ['as' => 'pages.notifications', 'uses' => 'PageController@notifications']);
+    Route::get('tables', ['as' => 'pages.tables', 'uses' => 'PageController@tables']);
+    Route::get('typography', ['as' => 'pages.typography', 'uses' => 'PageController@typography']);
+});
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('user', 'AdminController', ['except' => ['show']]);
+    Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
+    Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
+    Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
+});

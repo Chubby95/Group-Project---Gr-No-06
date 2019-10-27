@@ -22,7 +22,7 @@ class RedirectIfAuthenticated
 
             switch ($role[0]['roleType']) {
                 case 'Student':
-                    return redirect()->route('student/home');
+                    return redirect()->route('dashboard');
                     break;
                 case 'Deen':
                     return redirect()->route('admin');

@@ -32,7 +32,7 @@ class LoginController extends Controller
 
         switch ($role[0]['roleType']) {
             case 'Student':
-                    return 'admin';
+                    return 'dashboard';
                 break;
             case 'Employee':
                     return 'projects';
