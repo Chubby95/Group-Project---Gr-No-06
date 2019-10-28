@@ -24,9 +24,6 @@ class RedirectIfAuthenticated
                 case 'student':
                     return redirect()->route('dashboard');
                     break;
-                case 'deen':
-                    return redirect()->route('Deen');
-                    break;
                 default:
                     return redirect()->route('login');
                     break;
