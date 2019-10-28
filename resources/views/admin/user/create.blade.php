@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => __('User Management'), 'pageSlug' => 'users'])
+@extends('layouts.admin.app', ['page' => __('User Management'), 'pageSlug' => 'admin.users'])
 
 @section('content')
     <div class="container-fluid mt--7">

@@ -1,6 +1,6 @@
 <footer class="footer">
     <div class="container-fluid">
-        <ul class="nav">
+        <!-- <ul class="nav">
             <li class="nav-item">
                 <a href="https://creative-tim.com" target="blank" class="nav-link">
                     {{ _('Creative Tim') }}
@@ -21,11 +21,11 @@
                     {{ _('Blog') }}
                 </a>
             </li>
-        </ul>
+        </ul> -->
         <div class="copyright">
-            &copy; {{ now()->year }} {{ _('made with') }} <i class="tim-icons icon-heart-2"></i> {{ _('by') }}
-            <a href="https://creative-tim.com" target="_blank">{{ _('Creative Tim') }}</a> &amp;
-            <a href="https://updivision.com" target="_blank">{{ _('Updivision') }}</a> {{ _('for a better web') }}.
+            &copy; {{ now()->year }} {{ _('made with') }} {{ _('by') }}
+            <a href="#" target="_blank">{{ _('UOJ Group 6') }}</a> &amp;
+             {{ _('for a better web') }}.
         </div>
     </div>
 </footer>

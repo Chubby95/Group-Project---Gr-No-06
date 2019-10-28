@@ -18,7 +18,7 @@
                     <b class="caret mt-1"></b>
                 </a>
 
-                <div class="collapse show" id="laravel-examples">
+                <!-- <div class="collapse show" id="laravel-examples">
                     <ul class="nav pl-4">
                         <li @if ($pageSlug=='profile' ) class="active " @endif>
                             <a href="{{ route('profile.edit')  }}">
@@ -33,7 +33,7 @@
                             </a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
             </li>
             <li @if ($pageSlug=='icons' ) class="active " @endif>
                 <a href="{{ route('pages.icons') }}">

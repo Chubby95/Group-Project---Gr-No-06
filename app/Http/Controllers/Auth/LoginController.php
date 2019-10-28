@@ -34,8 +34,8 @@ class LoginController extends Controller
             case 'Student':
                     return 'dashboard';
                 break;
-            case 'Employee':
-                    return 'projects';
+            case 'admin':
+                    return 'admin';
                 break; 
             default:
                     return 'login'; 

@@ -25,7 +25,7 @@ class RedirectIfAuthenticated
                     return redirect()->route('dashboard');
                     break;
                 case 'Deen':
-                    return redirect()->route('admin');
+                    return redirect()->route('Deen');
                     break;
                 default:
                     return redirect()->route('login');

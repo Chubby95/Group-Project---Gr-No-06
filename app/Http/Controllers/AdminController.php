@@ -15,12 +15,19 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('role:admin');
+    }
+
+    public function home()
+    {
+        return view('admin.dashboard', ['pageSlug' => 'admin']);
     }
 
     public function index(User $model)
     {
-        return view('users.index', ['users' => $model->paginate(15)]);
+        return view('admin.user.index', ['pageSlug' => 'admin.users','users' => $model->paginate(15)]);
     }
+
 
     /**
      * Show the form for creating a new user
@@ -29,7 +36,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('admin.user.create',['pageSlug' => 'admin.users']);
     }
 
     /**
@@ -43,7 +50,7 @@ class AdminController extends Controller
     {
         $model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
 
-        return redirect()->route('user.index')->withStatus(__('User successfully created.'));
+        return redirect()->route('admin.user.index')->withStatus(__('User successfully created.'));
     }
 
     /**
@@ -54,11 +61,8 @@ class AdminController extends Controller
      */
     public function edit(User $user)
     {
-        if ($user->id == 1) {
-            return redirect()->route('user.index');
-        }
-
-        return view('users.edit', compact('user'));
+        
+        return view('admin.user.edit', compact('user'),['pageSlug' => 'admin.users']);
     }
 
     /**
@@ -78,7 +82,7 @@ class AdminController extends Controller
                 )
         );
 
-        return redirect()->route('user.index')->withStatus(__('User successfully updated.'));
+        return redirect()->route('admin.user.index')->withStatus(__('User successfully updated.'));
     }
 
     /**
@@ -95,6 +99,6 @@ class AdminController extends Controller
 
         $user->delete();
 
-        return redirect()->route('user.index')->withStatus(__('User successfully deleted.'));
+        return redirect()->route('admin.user.index')->withStatus(__('User successfully deleted.'));
     }
 }
