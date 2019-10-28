@@ -21,10 +21,10 @@ class RedirectIfAuthenticated
             $role = Auth::user()->roles()->get();
 
             switch ($role[0]['roleType']) {
-                case 'Student':
+                case 'student':
                     return redirect()->route('dashboard');
                     break;
-                case 'Deen':
+                case 'deen':
                     return redirect()->route('Deen');
                     break;
                 default:

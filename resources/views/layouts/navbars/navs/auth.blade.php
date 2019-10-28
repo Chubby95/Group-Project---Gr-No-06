@@ -46,8 +46,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown nav-item">
-                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown">
                         <div class="photo">
                             <img src="{{ asset('/img/anime3.png') }}" alt="{{ __('Profile Photo') }}">
                         </div>

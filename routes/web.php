@@ -17,23 +17,23 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
-
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('verified');
-
-
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' =>  ['auth', 'role:dean']], function () {
+    Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+    Route::resource('user', 'HomeController');
     Route::get('icons', ['as' => 'pages.icons', 'uses' => 'PageController@icons']);
     Route::get('notifications', ['as' => 'pages.notifications', 'uses' => 'PageController@notifications']);
     Route::get('tables', ['as' => 'pages.tables', 'uses' => 'PageController@tables']);
     Route::get('typography', ['as' => 'pages.typography', 'uses' => 'PageController@typography']);
 });
-Route::group(['middleware' => 'auth'], function () {
+
+Route::group(['middleware' =>  ['auth', 'role:student']], function () {
+    Route::get('/dashboard', 'StudentController@home')->name('dashboard')->middleware('verified');
     Route::resource('user', 'StudentController');
-    Route::get('profile', ['as' => 'admin.profile.edit', 'uses' => 'ProfileController@edit']);
-    Route::put('profile', ['as' => 'admin.profile.update', 'uses' => 'ProfileController@update']);
-    Route::put('profile/password', ['as' => 'admin.profile.password', 'uses' => 'ProfileController@password']);
+    Route::get('profile', ['as' => 'profile.edit', 'uses' => 'StudentProfileController@edit']);
+    Route::put('profile', ['as' => 'profile.update', 'uses' => 'StudentProfileController@update']);
+    Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'StudentProfileController@password']);
 });
+
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/admin', 'AdminController@home')->name('admin')->middleware('verified');
     Route::resource('user', 'AdminController');
