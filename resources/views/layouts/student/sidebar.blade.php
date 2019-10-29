@@ -21,15 +21,9 @@
                 <div class="collapse show" id="Settings">
                     <ul class="nav pl-4">
                         <li @if ($pageSlug=='student.profile' ) class="active " @endif>
-                            <a href="{{ route('profile.edit')  }}">
+                            <a href="{{ route('dashboard.profile.edit')  }}">
                                 <i class="tim-icons icon-single-02"></i>
                                 <p>{{ _('User Profile') }}</p>
-                            </a>
-                        </li>
-                        <li @if ($pageSlug=='student.users' ) class="active " @endif>
-                            <a href="{{ route('user.index')  }}">
-                                <i class="tim-icons icon-bullet-list-67"></i>
-                                <p>{{ _('User Management') }}</p>
                             </a>
                         </li>
                     </ul>
