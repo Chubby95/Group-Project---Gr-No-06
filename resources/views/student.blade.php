@@ -9,11 +9,9 @@
     <body>
         <div class="container">
         <div class="text-center">
-        <h1> Student Details </h1>
+        <h1>Student Details</h1>
         <div class="row">
         <div class="col-md-12">
-
-
 
         </div>
         </div>
