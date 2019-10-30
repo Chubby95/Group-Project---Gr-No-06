@@ -62,10 +62,10 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(User $model,array $data)
     {
         $role = UserRoles::where('roleType','student')->first();
-        $user =  User::create([
+        $user =  $model->create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),

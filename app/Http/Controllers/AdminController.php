@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\UserRoles;
+use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 
 class AdminController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *
@@ -25,7 +30,7 @@ class AdminController extends Controller
 
     public function index(User $model)
     {
-        return view('admin.user.index', ['pageSlug' => 'admin.users','users' => $model->paginate(15)]);
+        return view('admin.user.index', ['pageSlug' => 'admin.users', 'users' => $model->paginate(15)]);
     }
 
 
@@ -34,9 +39,9 @@ class AdminController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(UserRoles $model)
     {
-        return view('admin.user.create',['pageSlug' => 'admin.users']);
+        return view('admin.user.create', ['pageSlug' => 'admin.users', 'roles' => $model->get()]);
     }
 
     /**
@@ -48,9 +53,10 @@ class AdminController extends Controller
      */
     public function store(UserRequest $request, User $model)
     {
-        $model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
-
-        return redirect()->route('admin.user.index')->withStatus(__('User successfully created.'));
+        $user = $model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
+        $user->roles()->attach($request->get('role'));
+        event(new Registered($user));
+        return redirect()->route('user.index')->withStatus(__('User successfully created.'));
     }
 
     /**
@@ -59,10 +65,10 @@ class AdminController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\View\View
      */
-    public function edit(User $user)
+    public function edit(User $user, UserRoles $model)
     {
-        
-        return view('admin.user.edit', compact('user'),['pageSlug' => 'admin.users']);
+
+        return view('admin.user.edit', compact('user'), ['pageSlug' => 'admin.users', 'roles' => $model->get()]);
     }
 
     /**
@@ -82,7 +88,11 @@ class AdminController extends Controller
                 )
         );
 
-        return redirect()->route('admin.user.index')->withStatus(__('User successfully updated.'));
+        $user->roles()->where('user_id',$user->get('id'))->delete();
+
+        $user->roles()->attach($request->get('role'));
+
+        return redirect()->route('user.index')->withStatus(__('User successfully updated.'));
     }
 
     /**
@@ -99,6 +109,6 @@ class AdminController extends Controller
 
         $user->delete();
 
-        return redirect()->route('admin.user.index')->withStatus(__('User successfully deleted.'));
+        return redirect()->route('user.index')->withStatus(__('User successfully deleted.'));
     }
 }
