@@ -25,6 +25,17 @@ Route::group(['middleware' =>  ['auth', 'role:dean']], function () {
     Route::get('typography', ['as' => 'pages.typography', 'uses' => 'PageController@typography']);
 });
 
+Route::group(['middleware' =>  ['auth', 'role:head-of-the-department']], function () {
+    Route::get('hod/dashboard', 'HodController@index')->name('hod/dashboard')->middleware('verified');
+    Route::get('hod/profile', ['as' => 'hod.profile.edit', 'uses' => 'HodProfileController@edit']);
+    Route::put('hod/profile', ['as' => 'hod.profile.update', 'uses' => 'HodProfileController@update']);
+    Route::put('hod/profile/password', ['as' => 'hod.profile.password', 'uses' => 'HodProfileController@password']);
+    Route::get('icons', ['as' => 'pages.icons', 'uses' => 'PageController@icons']);
+    Route::get('notifications', ['as' => 'pages.notifications', 'uses' => 'PageController@notifications']);
+    Route::get('tables', ['as' => 'pages.tables', 'uses' => 'PageController@tables']);
+    Route::get('typography', ['as' => 'pages.typography', 'uses' => 'PageController@typography']);
+});
+
 Route::group(['middleware' =>  ['auth', 'role:student']], function () {
     Route::get('/dashboard', 'StudentController@home')->name('dashboard')->middleware('verified');
     Route::get('dashboard/profile', ['as' => 'dashboard.profile.edit', 'uses' => 'StudentProfileController@edit']);
