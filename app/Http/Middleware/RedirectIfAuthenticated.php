@@ -22,10 +22,19 @@ class RedirectIfAuthenticated
 
             switch ($role[0]['roleType']) {
                 case 'student':
-                    return redirect()->route('dashboard');
+                        return 'dashboard';
                     break;
+                case 'dean':
+                        return 'home';
+                    break;
+                case 'head-of-the-department':
+                        return 'hod/dashboard';
+                    break; 
+                case 'admin':
+                        return 'admin';
+                    break; 
                 default:
-                    return redirect()->route('login');
+                        return 'login'; 
                     break;
             }
         }

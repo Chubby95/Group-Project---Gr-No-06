@@ -36,6 +36,9 @@ class LoginController extends Controller
                 break;
             case 'dean':
                     return 'home';
+                break;
+            case 'head-of-the-department':
+                    return 'hod/dashboard';
                 break; 
             case 'admin':
                     return 'admin';
