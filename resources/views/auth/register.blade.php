@@ -1,57 +1,56 @@
 @extends('layouts.app', ['class' => 'register-page', 'page' => _('Register Page'), 'contentClass' => 'register-page'])
 
 @section('content')
-    <div class="row">
-        <div class="col-md-5 ml-auto">
-            <div class="info-area info-horizontal mt-5">
-                <div class="icon icon-warning">
-                    <i class="tim-icons icon-wifi"></i>
-                </div>
-                <div class="description">
-                    <h3 class="info-title">{{ _('Marketing') }}</h3>
-                    <p class="description">
-                        {{ _('We\'ve created the marketing campaign of the website. It was a very interesting collaboration.') }}
-                    </p>
-                </div>
+<div class="row">
+    <div class="col-md-5 ml-auto">
+        <div class="info-area info-horizontal mt-5">
+            <div class="icon icon-warning">
+                <i class="tim-icons icon-wifi"></i>
             </div>
-            <div class="info-area info-horizontal">
-                <div class="icon icon-primary">
-                    <i class="tim-icons icon-triangle-right-17"></i>
-                </div>
-                <div class="description">
-                    <h3 class="info-title">{{ _('Fully Coded in HTML5') }}</h3>
-                    <p class="description">
-                        {{ _('We\'ve developed the website with HTML5 and CSS3. The client has access to the code using GitHub.') }}
-                    </p>
-                </div>
-            </div>
-            <div class="info-area info-horizontal">
-                <div class="icon icon-info">
-                    <i class="tim-icons icon-trophy"></i>
-                </div>
-                <div class="description">
-                    <h3 class="info-title">{{ _('Built Audience') }}</h3>
-                    <p class="description">
-                        {{ _('There is also a Fully Customizable CMS Admin Dashboard for this product.') }}
-                    </p>
-                </div>
+            <div class="description">
+                <h3 class="info-title">{{ _('Online') }}</h3>
+                <p class="description">
+                    {{ _('Keep In Touch') }}
+                </p>
             </div>
         </div>
-        <div class="col-md-7 mr-auto">
-            <div class="card card-register card-white">
-                <div class="card-header">
-                    <img class="card-img" src="{{ asset('white') }}/img/card-primary.png" alt="Card image">
-                    <h4 class="card-title">{{ _('Register') }}</h4>
-                </div>
-                <form class="form" method="post" action="{{ route('register') }}">
-                    @csrf
+        <div class="info-area info-horizontal">
+            <div class="icon icon-primary">
+                <i class="tim-icons icon-triangle-right-17"></i>
+            </div>
+            <div class="description">
+                <h3 class="info-title">{{ _('Reduce waiting time') }}</h3>
+                <p class="description">
+                    {{ _('Manage your Profile and reduce time') }}
+                </p>
+            </div>
+        </div>
+        <div class="info-area info-horizontal">
+            <div class="icon icon-info">
+                <i class="tim-icons icon-trophy"></i>
+            </div>
+            <div class="description">
+                <h3 class="info-title">{{ _('Built Audience') }}</h3>
+                <p class="description">
+                    {{ _('Apply you all aplications online') }}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-7 mr-auto">
+        <div class="card card-register card-white">
+            <div class="card-header">
+                <img class="card-img" src="{{ asset('img/card-primary.png') }}" alt="Card image">
+                <h4 class="card-title">{{ _('Register') }}</h4>
+            </div>
+            <form class="form" method="post" action="{{ route('register') }}">
+                @csrf
 
-                    <div class="card-body">
-                        <div class="input-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <i class="tim-icons icon-single-02"></i>
-                                </div>
+                <div class="card-body">
+                    <div class="input-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="tim-icons icon-single-02"></i>
                             </div>
                             <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ _('Name') }}" value="{{ old('name') }}">
                             @include('alerts.feedback', ['field' => 'name'])

@@ -21,14 +21,20 @@ class RedirectIfAuthenticated
             $role = Auth::user()->roles()->get();
 
             switch ($role[0]['roleType']) {
-                case 'Student':
-                    return redirect()->route('student/home');
+                case 'student':
+                        return 'dashboard';
                     break;
-                case 'Deen':
-                    return redirect()->route('admin');
+                case 'dean':
+                        return 'home';
                     break;
+                case 'head-of-the-department':
+                        return 'hod/dashboard';
+                    break; 
+                case 'admin':
+                        return 'admin';
+                    break; 
                 default:
-                    return redirect()->route('login');
+                        return 'login'; 
                     break;
             }
         }
