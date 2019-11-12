@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\ClarkController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -49,4 +51,12 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'AdminProfileController@edit']);
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'AdminProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'AdminProfileController@password']);
+});
+
+
+Route::group(['middleware'=>['auth','role:dean-office-clark']],function(){
+    Route::get('clark/dashboard','ClarkController@index')->name('clark/dashboard')->middleware('verified');
+    Route::resource('clark/departments','DepartmentController');
+    Route::resource('clark/courses', 'CourseController');
+    Route::resource('clark/lectures', 'LectureController');
 });
