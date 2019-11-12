@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Courses;
+use App\Department;
+use App\Lectures;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -22,9 +24,15 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Department $department,Lectures $lectures)
     {
-        return view('clark.courses.create', ['pageSlug' => 'clark.courses']);
+        return view('clark.courses.create', ['pageSlug' => 'clark.courses','departments'=> $department->get(),'lectures'=>$lectures->get()]);
+    }
+
+    public function getLecturesByDepartment($department,Lectures $lectures){
+        return $lectures->get();
+
+
     }
 
     /**

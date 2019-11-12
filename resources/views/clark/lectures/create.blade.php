@@ -29,6 +29,20 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <h6 class="heading-small text-muted mb-4">{{ __('Department') }}</h6>
+                                <div class="pl-lg-4">
+                                    <div class="form-group{{ $errors->has('department_name') ? ' has-danger' : '' }}">
+                                        <label class="form-control-label" for="select-user-department">{{ __('Department') }}</label>
+                                        <select name="department" id="select-user-department" class="form-control form-control-alternative" required>
+                                            @foreach ($departments as $department)
+                                            <option value="{{ $department['id'] }}">{{ $department["department_name"] }}</option>
+                                            @endforeach
+                                        </select>
+                                        @include('alerts.feedback', ['field' => 'department_name'])
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="text-center">

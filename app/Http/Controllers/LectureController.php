@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Lectures;
 use Illuminate\Http\Request;
 use App\Http\Requests\LectureRequest;
+use App\Department;
 
 class LectureController extends Controller
 {
@@ -23,9 +24,9 @@ class LectureController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Department $department)
     {
-        return view('clark.lectures.create', ['pageSlug' => 'clark.lectures']);
+        return view('clark.lectures.create', ['pageSlug' => 'clark.lectures','departments'=> $department->get()]);
     }
 
     /**
