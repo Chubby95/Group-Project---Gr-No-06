@@ -32,8 +32,6 @@ class CourseController extends Controller
 
     public function getLecturesByDepartment($department,Lectures $lectures){
         return $lectures->get();
-
-
     }
 
     /**
@@ -44,6 +42,14 @@ class CourseController extends Controller
      */
     public function store(Request $request,Courses $model)
     {
+        if($request["theory"] ==="on"){
+            $request["theory"] = 1;
+        }
+
+        if($request["practical"] === "on"){
+            $request["practical"]=1;
+        }
+        
         $model->create($request->all());
         return redirect()->route('courses.index')->withStatus(__('Course successfully created.'));
     }
