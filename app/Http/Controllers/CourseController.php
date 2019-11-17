@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Courses;
 use App\Department;
 use App\Lectures;
+use App\Subjects;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -24,9 +25,9 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Department $department,Lectures $lectures)
+    public function create(Department $department,Lectures $lectures,Subjects $subjects)
     {
-        return view('clark.courses.create', ['pageSlug' => 'clark.courses','departments'=> $department->get(),'lectures'=>$lectures->get()]);
+        return view('clark.courses.create', ['pageSlug' => 'clark.courses','departments'=> $department->get(),'lectures'=>$lectures->get(),'subjects'=> $subjects->get()]);
     }
 
     public function getLecturesByDepartment($department,Lectures $lectures){

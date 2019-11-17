@@ -16,7 +16,7 @@ class LectureController extends Controller
      */
     public function index(Lectures $model)
     {
-        return view('clark.lectures.index',['pageSlug' => 'clark.lectures','lectures'=> $model->paginate(15)]);
+        return view('clark.lectures.index',['pageSlug' => 'clark.lectures','lectures'=> $model->with('departments')->paginate(15)]);
     }
 
     /**
@@ -37,7 +37,9 @@ class LectureController extends Controller
      */
     public function store(LectureRequest $request, Lectures $lectures)
     {
-        $lectures->create($request->all());
+        $department = Department::where('id',$request->get('department_id'))->first();
+        $lecture = $lectures->create($request->all());
+        $lecture->departments()->attach($department);
         return redirect()->route('lectures.index')->withStatus(__('Course successfully created.'));
     }
 
@@ -58,9 +60,10 @@ class LectureController extends Controller
      * @param  \App\Lectures  $lectures
      * @return \Illuminate\Http\Response
      */
-    public function edit(Lectures $lectures)
+    public function edit(Lectures $lecture)
     {
-        return view('clark.lectures.create', compact('lecture'),['pageSlug' => 'clark.lectures']);
+        $departments = Department::get();
+        return view('clark.lectures.edit', compact(['lecture','departments']),['pageSlug' => 'clark.lectures']);
     }
 
     /**

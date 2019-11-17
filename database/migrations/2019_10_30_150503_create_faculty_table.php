@@ -13,7 +13,7 @@ class CreateFacultyTable extends Migration
      */
     public function up()
     {
-        Schema::create('faculty', function (Blueprint $table) {
+        Schema::create('faculties', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('faculty_name');
             $table->string('dean');
@@ -28,6 +28,6 @@ class CreateFacultyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('faculty');
+        Schema::dropIfExists('faculties');
     }
 }

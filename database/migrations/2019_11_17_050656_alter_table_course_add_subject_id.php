@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHodTable extends Migration
+class AlterTableCourseAddSubjectId extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateHodTable extends Migration
      */
     public function up()
     {
-        Schema::create('hods', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('hod_name');
-            $table->string('dep_id');
-            $table->timestamps();
+        Schema::table('courses', function (Blueprint $table) {
+            $table->integer('subject_id');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateHodTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hods');
+        Schema::table('courses', function (Blueprint $table) {
+            $table->dropColumn('subject_id');
+        });
     }
 }

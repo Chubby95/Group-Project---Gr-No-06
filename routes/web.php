@@ -59,4 +59,5 @@ Route::group(['middleware'=>['auth','role:dean-office-clark']],function(){
     Route::resource('clark/departments','DepartmentController');
     Route::resource('clark/courses', 'CourseController');
     Route::resource('clark/lectures', 'LectureController');
+    Route::resource('clark/subjects', 'SubjectController');
 });

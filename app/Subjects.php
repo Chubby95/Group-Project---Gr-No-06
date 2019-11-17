@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Lectures extends Model
+class Subjects extends Model
 {
     protected $fillable =  [
-        'lecture_name'
+        'Title','department_id'
     ];
 
     public function departments(){
-        return $this->belongsToMany(Department::class,'department_lectures');
+        return $this->belongsTo(Department::class,'department_id','id');
     }
 }

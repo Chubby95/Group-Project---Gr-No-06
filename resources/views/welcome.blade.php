@@ -8,7 +8,7 @@
                 <div class="col-lg-5 col-md-6">
                     <div class="content">
                         <div class="title m-b-md">
-                            University Of Jaffna
+                            <h1>University Of Jaffna</h1>
                         </div>
 
                         <div class="links">

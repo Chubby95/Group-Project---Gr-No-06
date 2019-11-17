@@ -36,6 +36,12 @@
                     <p>{{ _('Lectures') }}</p>
                 </a>
             </li>
+            <li @if ($pageSlug=='clark.subjects' ) class="active " @endif>
+                <a href="{{ route('subjects.index')  }}">
+                    <i class="tim-icons icon-bullet-list-67"></i>
+                    <p>{{ _('subjects') }}</p>
+                </a>
+            </li>
             <li @if ($pageSlug=='clark.courses' ) class="active " @endif>
                 <a href="{{ route('courses.index')  }}">
                     <i class="tim-icons icon-bullet-list-67"></i>

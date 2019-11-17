@@ -37,15 +37,15 @@
             </div>
         </div>
     </div>
-    <div class="col-md-7 mr-auto">
+    <div class="col-lg-7 col-md-6  ml-auto mr-auto">
         <form class="form" method="post" action="{{ route('register') }}">
             @csrf
             <div class="card card-register card-white">
                 <div class="card-header">
-                    <img class="card-img" src="{{ asset('img/card-primary.png') }}" alt="Card image">
+                    <img class="card-img mt-0" src="{{ asset('img/card-primary.png') }}" alt="">
                     <h4 class="card-title">{{ _('Register') }}</h4>
                 </div>
-                <div class="card-body">
+                <div class="card-body mt-3">
                     <div class="input-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                         <div class="input-group-prepend">
                             <div class="input-group-text">

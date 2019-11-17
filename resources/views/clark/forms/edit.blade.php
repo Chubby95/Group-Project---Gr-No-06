@@ -8,15 +8,15 @@
                 <div class="card-header">
                     <div class="row align-items-center">
                         <div class="col-8">
-                            <h3 class="mb-0">{{ __('Edit lecture') }}</h3>
+                            <h3 class="mb-0">{{ __('Edit form') }}</h3>
                         </div>
                         <div class="col-4 text-right">
-                            <a href="{{ route('lectures.index') }}" class="btn btn-sm btn-primary">{{ __('Back') }}</a>
+                            <a href="{{ route('forms.index') }}" class="btn btn-sm btn-primary">{{ __('Back') }}</a>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="{{ route('lectures.update', $lecture) }}" autocomplete="off">
+                    <form method="post" action="{{ route('forms.update', $form) }}" autocomplete="off">
                         @csrf
                         @method('put')
                         <div class="row">
@@ -34,12 +34,12 @@
                                         @include('alerts.feedback', ['field' => 'department_id'])
                                     </div>
                                 </div>
-                                <h6 class="heading-small text-muted mb-4">{{ __('lecture information') }}</h6>
+                                <h6 class="heading-small text-muted mb-4">{{ __('form information') }}</h6>
                                 <div class="pl-lg-4">
-                                    <div class="form-group{{ $errors->has('lecture_name') ? ' has-danger' : '' }}">
+                                    <div class="form-group{{ $errors->has('Title') ? ' has-danger' : '' }}">
                                         <label class="form-control-label" for="input-name">{{ __('Name') }}</label>
-                                        <input type="text" name="lecture_name" id="input-lecture_name" class="form-control form-control-alternative{{ $errors->has('lecture_name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ old('lecture_name',$lecture->lecture_name) }}" required autofocus>
-                                        @include('alerts.feedback', ['field' => 'lecture_name'])
+                                        <input type="text" name="Title" id="input-Title" class="form-control form-control-alternative{{ $errors->has('Title') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ old('Title',$form->Title) }}" required autofocus>
+                                        @include('alerts.feedback', ['field' => 'Title'])
                                     </div>
                                 </div>
                             </div>
