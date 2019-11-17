@@ -71,9 +71,9 @@ class CourseController extends Controller
      * @param  \App\Courses  $courses
      * @return \Illuminate\Http\Response
      */
-    public function edit(Courses $courses)
+    public function edit(Department $department,Lectures $lectures,Subjects $subjects,Courses $course)
     {
-        return view('clark.courses.edit',compact('course'), ['pageSlug' => 'clark.courses']);
+        return view('clark.courses.edit',compact('course'), ['pageSlug' => 'clark.courses','departments'=>$department->get(),'lectures'=>$lectures->get(),'subjects'=> $subjects->get()]);
     }
 
     /**
@@ -83,9 +83,20 @@ class CourseController extends Controller
      * @param  \App\Courses  $courses
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Courses $courses)
+    public function update(Request $request, Courses $course)
     {
-        $courses->update($request->all());
+        if($request["theory"] ==="on"){
+            $request["theory"] = 1;
+        }else {
+            $request["theory"] = 0;
+        }
+
+        if($request["practical"] === "on"){
+            $request["practical"]=1;
+        }else {
+            $request["practical"] = 0;
+        }
+        $course->update($request->all());
         return redirect()->route('courses.index')->withStatus(__('Course successfully updated.'));
     }
 

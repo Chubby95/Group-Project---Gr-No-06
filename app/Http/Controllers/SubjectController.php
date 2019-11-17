@@ -58,9 +58,9 @@ class SubjectController extends Controller
      * @param  \App\Subjects  $subjects
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subjects $subjects)
+    public function edit(Subjects $subject,Department $department)
     {
-        //
+        return view('clark.subjects.edit',compact('subject'),['pageSlug'=> 'clark.subjects','departments'=> $department->get()]);
     }
 
     /**
