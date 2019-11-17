@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Clark;
+use App\Courses;
 use App\Department;
+use App\Lectures;
+use App\User;
+use App\UserRoles;
+use App\UserAssingedRoles;
 use Illuminate\Http\Request;
 
 class ClarkController extends Controller
@@ -23,9 +28,12 @@ class ClarkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Department $department,Lectures $lectures,UserAssingedRoles $students,Courses $courses,UserRoles $userRoles)
     {
-        return view('clark.dashboard', ['pageSlug' => 'clark.dashboard']);
+        $roleId = $userRoles->where('roleType','student')->first();
+        $st = $students->where('user_roles_id',$roleId->id)->get()->count();
+
+        return view('clark.dashboard', ['pageSlug' => 'clark.dashboard','department_count'=>$department->get()->count(),'lectures_count'=>$lectures->get()->count(),'students_count'=>$st,'courses_count'=>$courses->get()->count()]);
     }
 
 

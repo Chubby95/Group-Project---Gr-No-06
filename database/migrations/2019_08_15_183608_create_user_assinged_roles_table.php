@@ -13,7 +13,7 @@ class CreateUserAssingedRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_assinged_roles', function (Blueprint $table) {
+        Schema::create('user_assigned_roles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('user_id');
             $table->string('user_roles_id');
@@ -28,6 +28,6 @@ class CreateUserAssingedRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_assinged_roles');
+        Schema::dropIfExists('user_assigned_roles');
     }
 }
