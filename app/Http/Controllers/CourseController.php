@@ -49,6 +49,10 @@ class CourseController extends Controller
         if($request["practical"] === "on"){
             $request["practical"]=1;
         }
+
+        if($request["group_project"] === "on"){
+            $request["group_project"]=1;
+        }
         
         $model->create($request->all());
         return redirect()->route('courses.index')->withStatus(__('Course successfully created.'));
@@ -95,6 +99,11 @@ class CourseController extends Controller
             $request["practical"]=1;
         }else {
             $request["practical"] = 0;
+        }
+        if($request["group_project"] === "on"){
+            $request["group_project"]=1;
+        }else {
+            $request["group_project"] = 0;
         }
         $course->update($request->all());
         return redirect()->route('courses.index')->withStatus(__('Course successfully updated.'));

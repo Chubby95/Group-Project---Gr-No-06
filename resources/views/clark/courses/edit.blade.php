@@ -104,6 +104,16 @@
                                             </label>
                                         </div>
                                     </div>
+                                    <div class="form-group{{ $errors->has('group_project') ? ' has-danger' : '' }}">
+                                        <div class="pl-lg-4">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input {{ $errors->has('group_project') ? ' is-invalid' : '' }}" name="group_project" type="checkbox" {{ old('group_project',$course->group_project) ? 'checked' : '' }}>
+                                                <span class="form-check-sign"></span>
+                                                {{ _('group_project') }}
+                                                @include('alerts.feedback', ['field' => 'group_project'])
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
