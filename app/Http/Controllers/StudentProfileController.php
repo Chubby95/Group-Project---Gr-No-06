@@ -18,7 +18,7 @@ class StudentProfileController extends Controller
         $this->middleware('role:student');
     }
 
-    
+
     public function edit()
     {
         return view('student.profile.edit');
