@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
+use App\Http\Requests\PasswordRequest;
 
 class StudentProfileController extends Controller
 {
@@ -30,11 +31,11 @@ class StudentProfileController extends Controller
      * @param  \App\Http\Requests\ProfileRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(ProfileRequest $request)
+    public function update(Request $request)
     {
         auth()->user()->update($request->all());
 
-        return back()->withStatus(__('Profile successfully updated.'));
+        return redirect()->route('dashboard')->withStatus(__('Profile successfully updated.'));
     }
 
     /**
@@ -47,6 +48,6 @@ class StudentProfileController extends Controller
     {
         auth()->user()->update(['password' => Hash::make($request->get('password'))]);
 
-        return back()->withPasswordStatus(__('Password successfully updated.'));
+        return redirect()->route('dashboard')->withPasswordStatus(__('Password successfully updated.'));
     }
 }

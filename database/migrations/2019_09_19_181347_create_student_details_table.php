@@ -16,7 +16,7 @@ class CreateStudentDetailsTable extends Migration
         Schema::create('student_details', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('users_id')->uniqe();
-            $table->string('stu_index_n0');
+            $table->string('stu_index_no');
             $table->string('stu_register_no');
             $table->string('stu_full_name');
             $table->string('stu_address_jaffna');

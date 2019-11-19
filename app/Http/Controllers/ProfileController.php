@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ProfileRequest;
+use App\Http\Requests\PasswordRequest;
 
 class ProfileController extends Controller
 {
