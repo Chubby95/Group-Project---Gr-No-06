@@ -27,7 +27,11 @@ class StudentProfileController extends Controller
     {
         $user = auth()->user()->roles()->get();
         $userid = $user[0]->pivot->user_id;
-        $student = $studentDetails->where('id', $userid)->with('subjects_1.departments','subjects_2.departments','subjects_3.departments')->get();
+        $student = $studentDetails->where('id', $userid)->with(
+            'subjects_1.departments',
+            'subjects_2.departments',
+            'subjects_3.departments',
+            'subject_courses')->get();
 
         $subject1ID = $student->get('stu_subject_1');
         $subject2ID = $student->get('stu_subject_2');
