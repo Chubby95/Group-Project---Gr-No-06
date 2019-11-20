@@ -11,14 +11,14 @@
                     <p>{{ _('Dashboard') }}</p>
                 </a>
             </li>
-            <li @if ($pageSlug=='student.dashboard' ) class="active " @endif>
-                <a href="{{ route('dashboard') }}">
+            <li @if ($pageSlug=='student.form.renew' ) class="active " @endif>
+                <a href="{{ route('dashboard/form/renew') }}">
                     <i class="tim-icons icon-chart-pie-36"></i>
                     <p>{{ _('Renewal Of Registration') }}</p>
                 </a>
             </li>
-            <li @if ($pageSlug=='student.dashboard' ) class="active " @endif>
-                <a href="{{ route('dashboard') }}">
+            <li @if ($pageSlug=='student.form.confirmation' ) class="active " @endif>
+                <a href="{{ route('dashboard/form/confirmation') }}">
                     <i class="tim-icons icon-chart-pie-36"></i>
                     <p>{{ _('Confirmation Of Studentship') }}</p>
                 </a>

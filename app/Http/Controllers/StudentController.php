@@ -105,4 +105,20 @@ class StudentController extends Controller
 
         return redirect()->route('student.user.index')->withStatus(__('User successfully deleted.'));
     }
+
+    public function renew(){
+        return view('student.forms.renew',['pageSlug' => 'student.form.renew']);
+    }
+
+    public function renewstore(){
+        return redirect()->route('student.forms.renew')->withStatus(__('User successfully deleted.'));
+    }
+
+    public function confirmation(){
+        return view('student.forms.confirmation',['pageSlug' => 'student.form.confirmation']);
+    }
+
+    public function confirmationstore(){
+        return redirect()->route('student.forms.confirmation')->withStatus(__('User successfully deleted.'));
+    }
 }

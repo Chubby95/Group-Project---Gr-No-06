@@ -1,6 +1,7 @@
 @extends('layouts.student.app', ['page' => __('User Profile'), 'pageSlug' => 'student.profile'])
 
 @section('content')
+{{ $student }}
 <div class="row">
     <div class="col-md-4">
         <div class="card card-user">

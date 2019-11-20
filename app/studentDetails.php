@@ -15,4 +15,18 @@ class StudentDetails extends Model
     public function user(){
         return $this->belongsTo(User::class,'users_id');
     }
+
+    public function subjects_1(){
+        return $this->belongsTo(Subjects::class,'stu_subject_1');
+    }
+    public function subjects_2(){
+        return $this->belongsTo(Subjects::class,'stu_subject_2');
+    }
+    public function subjects_3(){
+        return $this->belongsTo(Subjects::class,'stu_subject_3');
+    }
+
+    public function subject_1_courses(){
+        return $this->hasMany(Courses::class);
+    }
 }

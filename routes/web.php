@@ -12,6 +12,7 @@
 */
 
 use App\Http\Controllers\ClarkController;
+use Symfony\Component\Routing\Router;
 
 Route::get('/', function () {
     return view('welcome');
@@ -43,6 +44,10 @@ Route::group(['middleware' =>  ['auth', 'role:student']], function () {
     Route::get('dashboard/profile', ['as' => 'dashboard.profile.edit', 'uses' => 'StudentProfileController@edit']);
     Route::put('dashboard/profile', ['as' => 'dashboard.profile.update', 'uses' => 'StudentProfileController@update']);
     Route::put('dashboard/profile/password', ['as' => 'dashboard.profile.password', 'uses' => 'StudentProfileController@password']);
+    Route::get('dashboard/form/renew', 'StudentController@renew')->name('dashboard/form/renew')->middleware('verified');
+    Route::put('dashboard/renew', ['as' => 'dashboard.renew.store', 'uses' => 'StudentController@renewstore']);
+    Route::get('dashboard/form/confirmation', 'StudentController@confirmation')->name('dashboard/form/confirmation')->middleware('verified');
+    Route::put('dashboard/confirmation', ['as' => 'dashboard.confirmation.store', 'uses' => 'StudentController@confirmationstore']);
 });
 
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
