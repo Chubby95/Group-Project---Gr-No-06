@@ -19,13 +19,13 @@
                             {{ _('Student') }}
                         </p>
                         <p class="description">
-                            {{ _('Registration Number') }}
+                            {{ _('Registration Number') }} {{ _($student[0]->stu_register_no) }}
                         </p>
                         <p class="description">
-                            {{ _('Index Number') }}
+                            {{ _('Index Number') }} {{ _($student[0]->stu_index_no) }}
                         </p>
                         <p class="description">
-                            {{ _('Address') }}
+                            {{ _('Address') }} {{ _($student[0]->stu_address_perment) }}
                         </p>
                     </div>
                 </p>
@@ -96,8 +96,9 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group{{ $errors->has('stu_prefix') ? ' has-danger' : '' }}">
-                                <label class="form-control-label" for="select-user-subject">{{ __('Gender') }}</label>
-                                <select name="stu_prefix" id="select-user-subject" class="form-control form-control-alternative" required>
+                                <label class="form-control-label" for="stu_prefix">{{ __('') }}</label>
+                                <select name="stu_prefix" id="stu_prefix" class="form-control form-control-alternative" value="{{ old('stu_prefix', $student[0]->stu_prefix) }}" required>
+                                    <option value="">Select Prefix</option>
                                     <option value="Mr">Mr</option>
                                     <option value="Mrs">Mrs</option>
                                     <option value="Miss">Miss</option>
@@ -106,7 +107,7 @@
                             </div>
                             <div class="form-group{{ $errors->has('stu_address_jaffna') ? ' has-danger' : '' }}">
                                 <label>{{ _('Student Full Name') }}</label>
-                                <input type="text" name="stu_full_name" class="form-control{{ $errors->has('stu_full_name') ? ' is-invalid' : '' }}" placeholder="{{ _('Student Full Name') }}" value="{{ old('stu_full_name', auth()->user()->stu_full_name) }}">
+                                <input type="text" name="stu_full_name" class="form-control{{ $errors->has('stu_full_name') ? ' is-invalid' : '' }}" placeholder="{{ _('Student Full Name') }}" value="{{ old('stu_full_name', $student[0]->stu_full_name) }}">
                                 @include('alerts.feedback', ['field' => 'stu_full_name'])
                             </div>
                             <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
@@ -116,19 +117,18 @@
                             </div>
                             <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                                 <label>{{ _('Email address') }}</label>
-                                <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ _('Email address') }}" value="{{ old('email', auth()->user()->email) }}">
-                                @include('alerts.feedback', ['field' => 'email'])
+                                <input disabled type="email"  class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ _('Email address') }}" value="{{ old('email', auth()->user()->email) }}">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group{{ $errors->has('stu_address_jaffna') ? ' has-danger' : '' }}">
                                 <label>{{ _('Student Address In Jaffna') }}</label>
-                                <input type="text" name="stu_address_jaffna" class="form-control{{ $errors->has('stu_address_jaffna') ? ' is-invalid' : '' }}" placeholder="{{ _('Student Address In Jaffna') }}" value="{{ old('stu_address_jaffna', auth()->user()->stu_address_jaffna) }}">
+                                <input type="text" name="stu_address_jaffna" class="form-control{{ $errors->has('stu_address_jaffna') ? ' is-invalid' : '' }}" placeholder="{{ _('Student Address In Jaffna') }}" value="{{ old('stu_address_jaffna', $student[0]->stu_address_jaffna) }}">
                                 @include('alerts.feedback', ['field' => 'stu_address_jaffna'])
                             </div>
                             <div class="form-group{{ $errors->has('stu_address_perment') ? ' has-danger' : '' }}">
                                 <label>{{ _('Student Permenent Address') }}</label>
-                                <input type="text" name="stu_address_perment" class="form-control{{ $errors->has('stu_address_perment') ? ' is-invalid' : '' }}" placeholder="{{ _('Student Permenent Address') }}" value="{{ old('stu_address_perment', auth()->user()->stu_address_perment) }}">
+                                <input type="text" name="stu_address_perment" class="form-control{{ $errors->has('stu_address_perment') ? ' is-invalid' : '' }}" placeholder="{{ _('Student Permenent Address') }}" value="{{ old('stu_address_perment', $student[0]->stu_address_perment) }}">
                                 @include('alerts.feedback', ['field' => 'stu_address_perment'])
                             </div>
                         </div>
@@ -136,8 +136,9 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group{{ $errors->has('stu_gender') ? ' has-danger' : '' }}">
-                                <label class="form-control-label" for="select-user-subject">{{ __('Gender') }}</label>
-                                <select name="stu_gender" id="select-user-subject" class="form-control form-control-alternative" required>
+                                <label class="form-control-label" for="stu_gender">{{ __('Gender') }}</label>
+                                <select name="stu_gender" id="stu_gender" class="form-control form-control-alternative" required>
+                                    <option value="">Select Gender</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                     <option value="Other">Other</option>
@@ -148,7 +149,7 @@
                         <div class="col-md-3">
                             <div class="form-group{{ $errors->has('stu_mobile') ? ' has-danger' : '' }}">
                                 <label>{{ _('Student Mobile No') }}</label>
-                                <input type="text" name="stu_mobile" class="form-control{{ $errors->has('stu_mobile') ? ' is-invalid' : '' }}" placeholder="{{ _('Student Mobile No') }}" value="{{ old('stu_mobile', auth()->user()->stu_mobile) }}">
+                                <input type="text" name="stu_mobile" class="form-control{{ $errors->has('stu_mobile') ? ' is-invalid' : '' }}" placeholder="{{ _('Student Mobile No') }}" value="{{ old('stu_mobile', $student[0]->stu_mobile) }}">
                                 @include('alerts.feedback', ['field' => 'stu_mobile'])
                             </div>
                         </div>
@@ -159,21 +160,22 @@
                                 <div class="col-md-6">
                                     <div class="form-group{{ $errors->has('stu_index_no') ? ' has-danger' : '' }}">
                                         <label>{{ _('Student Index No') }}</label>
-                                        <input type="text" name="stu_index_no" class="form-control{{ $errors->has('stu_index_no') ? ' is-invalid' : '' }}" placeholder="{{ _('Student Index No') }}" value="{{ old('stu_index_no', auth()->user()->stu_index_no) }}">
+                                        <input type="text" name="stu_index_no" class="form-control{{ $errors->has('stu_index_no') ? ' is-invalid' : '' }}" placeholder="{{ _('Student Index No') }}" value="{{ old('stu_index_no', $student[0]->stu_index_no) }}">
                                         @include('alerts.feedback', ['field' => 'stu_index_no'])
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group{{ $errors->has('stu_register_no') ? ' has-danger' : '' }}">
                                         <label>{{ _('Student Registration No') }}</label>
-                                        <input type="text" name="stu_register_no" class="form-control{{ $errors->has('stu_register_no') ? ' is-invalid' : '' }}" placeholder="{{ _('Student Registration No') }}" value="{{ old('stu_register_no', auth()->user()->stu_register_no) }}">
+                                        <input type="text" name="stu_register_no" class="form-control{{ $errors->has('stu_register_no') ? ' is-invalid' : '' }}" placeholder="{{ _('Student Registration No') }}" value="{{ old('stu_register_no', $student[0]->stu_register_no) }}">
                                         @include('alerts.feedback', ['field' => 'stu_register_no'])
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group{{ $errors->has('stu_styding_year') ? ' has-danger' : '' }}">
-                                        <label class="form-control-label" for="select-user-subject">{{ __('Student Styding Level') }}</label>
-                                        <select name="stu_styding_year" id="select-user-subject" class="form-control form-control-alternative" required>
+                                        <label class="form-control-label" for="stu_styding_year">{{ __('Student Styding Level') }}</label>
+                                        <select name="stu_styding_year" id="stu_styding_year" class="form-control form-control-alternative" required>
+                                            <option value="">Select Level</option>
                                             <option value="1G">1G</option>
                                             <option value="2G">2G</option>
                                             <option value="3G">3G</option>
@@ -190,7 +192,36 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            
+                            <div class="form-group{{ $errors->has('stu_subject_1') ? ' has-danger' : '' }}">
+                                <label class="form-control-label" for="stu_subject_1">{{ __('First Subject') }}</label>
+                                <select name="stu_subject_1" id="stu_subject_1" class="form-control form-control-alternative" required>
+                                    <option value="">Select First Subject</option>
+                                    @foreach ($subjects as $subject)
+                                    <option value="{{ $subject['id'] }}">{{ $subject["Title"] }}</option>
+                                    @endforeach
+                                </select>
+                                @include('alerts.feedback', ['field' => 'stu_subject_1'])
+                            </div>
+                            <div class="form-group{{ $errors->has('stu_subject_2') ? ' has-danger' : '' }}">
+                                <label class="form-control-label" for="stu_subject_2">{{ __('Second Subject') }}</label>
+                                <select name="stu_subject_2" id="stu_subject_2" class="form-control form-control-alternative" required>
+                                    <option value="">Select Second Subject</option>
+                                    @foreach ($subjects as $subject)
+                                    <option value="{{ $subject['id'] }}">{{ $subject["Title"] }}</option>
+                                    @endforeach
+                                </select>
+                                @include('alerts.feedback', ['field' => 'stu_subject_2'])
+                            </div>
+                            <div class="form-group{{ $errors->has('stu_subject_3') ? ' has-danger' : '' }}">
+                                <label class="form-control-label" for="stu_subject_3">{{ __('Third ubjects') }}</label>
+                                <select name="stu_subject_3" id="stu_subject_3" class="form-control form-control-alternative" required>
+                                    <option value="">Select Third Subject</option>
+                                    @foreach ($subjects as $subject)
+                                    <option value="{{ $subject['id'] }}">{{ $subject["Title"] }}</option>
+                                    @endforeach
+                                </select>
+                                @include('alerts.feedback', ['field' => 'stu_subject_3'])
+                            </div>
                         </div>
                     </div>
                 </div>

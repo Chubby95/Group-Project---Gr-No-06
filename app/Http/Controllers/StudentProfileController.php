@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
+use App\Http\Requests\StudentDetailsRequest;
+use App\studentDetails;
+use App\Subjects;
 
 class StudentProfileController extends Controller
 {
@@ -20,9 +23,17 @@ class StudentProfileController extends Controller
     }
 
 
-    public function edit()
+    public function edit(Subjects $subjects, StudentDetails $studentDetails)
     {
-        return view('student.profile.edit');
+        $user = auth()->user()->roles()->get();
+        $userid = $user[0]->pivot->user_id;
+        $student = $studentDetails->where('id', $userid)->get();
+
+        $subject1ID = $student->get('stu_subject_1');
+        $subject2ID = $student->get('stu_subject_2');
+        $subject3ID = $student->get('stu_subject_3');
+
+        return view('student.profile.edit', ['student' => $student, 'subjects' => $subjects->get()]);
     }
 
     /**
@@ -31,11 +42,14 @@ class StudentProfileController extends Controller
      * @param  \App\Http\Requests\ProfileRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request)
+    public function update(StudentDetailsRequest $studentDetailsRequest, StudentDetails $studentDetails)
     {
-        auth()->user()->update($request->all());
 
-        return redirect()->route('dashboard')->withStatus(__('Profile successfully updated.'));
+            $user = auth()->user()->roles()->get();
+            $userid = $user[0]->pivot->user_id;
+            $studentDetails->updateOrCreate(['users_id' => $userid], $studentDetailsRequest->all());
+            auth()->user()->update($studentDetailsRequest->all());
+            return redirect()->route('dashboard')->withStatus(__('Profile successfully updated.'));
     }
 
     /**
