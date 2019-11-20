@@ -26,15 +26,15 @@ class StudentDetails extends Model
         return $this->belongsTo(Subjects::class,'stu_subject_3');
     }
 
-    public function subject_courses(){
-        return $this->hasMany(Courses::class,'subject_id');
+    public function subject_1_courses(){
+        return $this->hasMany(Courses::class,'subject_id','stu_subject_1');
     }
 
     public function subject_2_courses(){
-        return $this->hasMany(Courses::class,'subject_id');
+        return $this->hasMany(Courses::class,'subject_id','stu_subject_2');
     }
 
     public function subject_3_courses(){
-        return $this->hasMany(Courses::class,'subject_id');
+        return $this->hasMany(Courses::class,'subject_id','stu_subject_3');
     }
 }

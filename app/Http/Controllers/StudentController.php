@@ -121,4 +121,12 @@ class StudentController extends Controller
     public function confirmationstore(){
         return redirect()->route('student.forms.confirmation')->withStatus(__('User successfully deleted.'));
     }
+
+    public function endexam(){
+        return view('student.forms.endexam',['pageSlug' => 'student.form.endexam']);
+    }
+
+    public function endexamstore(){
+        return redirect()->route('student.forms.endexam')->withStatus(__('User successfully deleted.'));
+    }
 }

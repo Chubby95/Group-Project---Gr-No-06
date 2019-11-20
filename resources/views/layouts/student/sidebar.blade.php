@@ -23,6 +23,12 @@
                     <p>{{ _('Confirmation Of Studentship') }}</p>
                 </a>
             </li>
+            <li @if ($pageSlug=='student.form.endexam' ) class="active " @endif>
+                <a href="{{ route('dashboard/form/endexam') }}">
+                    <i class="tim-icons icon-chart-pie-36"></i>
+                    <p>{{ _('Aplication For End Exam') }}</p>
+                </a>
+            </li>
             <li>
                 <a data-toggle="collapse" href="#Settings" aria-expanded="true">
                     <i class="fab fa-laravel"></i>

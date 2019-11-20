@@ -48,6 +48,8 @@ Route::group(['middleware' =>  ['auth', 'role:student']], function () {
     Route::put('dashboard/renew', ['as' => 'dashboard.renew.store', 'uses' => 'StudentController@renewstore']);
     Route::get('dashboard/form/confirmation', 'StudentController@confirmation')->name('dashboard/form/confirmation')->middleware('verified');
     Route::put('dashboard/confirmation', ['as' => 'dashboard.confirmation.store', 'uses' => 'StudentController@confirmationstore']);
+    Route::get('dashboard/form/endexam', 'StudentController@endexam')->name('dashboard/form/endexam')->middleware('verified');
+    Route::put('dashboard/endexam', ['as' => 'dashboard.endexam.store', 'uses' => 'StudentController@endexamstore']);
 });
 
 Route::group(['middleware' => ['auth', 'role:admin']], function () {

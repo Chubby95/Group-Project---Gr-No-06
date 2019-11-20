@@ -31,7 +31,9 @@ class StudentProfileController extends Controller
             'subjects_1.departments',
             'subjects_2.departments',
             'subjects_3.departments',
-            'subject_courses')->get();
+            'subject_1_courses',
+            'subject_2_courses',
+            'subject_3_courses')->get();
 
         $subject1ID = $student->get('stu_subject_1');
         $subject2ID = $student->get('stu_subject_2');
