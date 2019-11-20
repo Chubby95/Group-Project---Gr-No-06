@@ -33,11 +33,8 @@ class StudentProfileController extends Controller
             'subjects_3.departments',
             'subject_1_courses',
             'subject_2_courses',
-            'subject_3_courses')->get();
+            'subject_3_courses')->first();
 
-        $subject1ID = $student->get('stu_subject_1');
-        $subject2ID = $student->get('stu_subject_2');
-        $subject3ID = $student->get('stu_subject_3');
 
         return view('student.profile.edit', ['student' => $student, 'subjects' => $subjects->get()]);
     }

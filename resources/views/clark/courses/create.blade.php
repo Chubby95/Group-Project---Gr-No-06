@@ -60,10 +60,21 @@
                                         @include('alerts.feedback', ['field' => 'course_name'])
                                     </div>
                                 </div>
-                                <div class="pl-lg-4">
+                                <div class="pl-lg-4">                                    
                                     <div class="form-group{{ $errors->has('level') ? ' has-danger' : '' }}">
-                                        <label class="form-control-label" for="input-name">{{ __('Course Level') }}</label>
-                                        <input type="text" name="level" id="input-level" class="form-control form-control-alternative{{ $errors->has('level') ? ' is-invalid' : '' }}" placeholder="{{ __('Course Level') }}" value="{{ old('level') }}" required autofocus>
+                                        <label class="form-control-label" for="level">{{ __('Student Styding Level') }}</label>
+                                        <select name="level" id="level" class="form-control form-control-alternative" required>
+                                            <option value="">Select Level</option>
+                                            <option value="1G">1G</option>
+                                            <option value="2G">2G</option>
+                                            <option value="3G">3G</option>
+                                            <option value="3M">3M</option>
+                                            <option value="4M">4M</option>
+                                            <option value="1S">1S</option>
+                                            <option value="2S">2S</option>
+                                            <option value="3S">3S</option>
+                                            <option value="4S">4S</option>
+                                        </select>
                                         @include('alerts.feedback', ['field' => 'level'])
                                     </div>
                                 </div>
