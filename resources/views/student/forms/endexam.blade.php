@@ -61,7 +61,7 @@
                             </div>
                             <div class="col-md-6">
                                 test
-                                {{_($students)}}
+                                {{_($student)}}
                             </div>
                         </div>
 

@@ -138,7 +138,7 @@ class StudentController extends Controller
             'subject_3_courses')->first();
 
 
-        return view('student.forms.endexam',['pageSlug' => 'student.form.endexam','students'=>$student]);
+        return view('student.forms.endexam',compact('student'),['pageSlug' => 'student.form.endexam']);
     }
 
     public function endexamstore(){
