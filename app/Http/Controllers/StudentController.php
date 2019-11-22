@@ -136,7 +136,22 @@ class StudentController extends Controller
         return view('student.forms.confirmation',['pageSlug' => 'student.form.confirmation']);
     }
 
-    public function confirmationstore(){
+    public function confirmationstore(Request $request){
+        $renewForm="";
+        if ($request->has('bank_slip')) {
+            // Get image file
+            $image = $request->file('bank_slip');
+            // Make a image name based on user name and current timestamp
+            $name = Str::slug($request->input('name')).'_'.time();
+            // Define folder path
+            $folder = '/uploads/images/';
+            // Make a file path where image will be stored [ folder path + file name + file extension]
+            $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+            // Upload image
+            $this->uploadOne($image, $folder, 'public', $name);
+            // Set user profile image path in database to filePath
+            $renewForm->bank_slip = $filePath;
+        }
         return redirect()->route('student.forms.confirmation')->withStatus(__('User successfully deleted.'));
     }
 
