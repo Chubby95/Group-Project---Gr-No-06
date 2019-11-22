@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\StudentDetails;
+use App\Subjects;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -122,8 +125,19 @@ class StudentController extends Controller
         return redirect()->route('student.forms.confirmation')->withStatus(__('User successfully deleted.'));
     }
 
-    public function endexam(){
-        return view('student.forms.endexam',['pageSlug' => 'student.form.endexam']);
+    public function endexam(StudentDetails $studentDetails){
+       
+        $user = auth()->user()->roles()->get();
+        $userid = $user[0]->pivot->user_id;
+        $student = $studentDetails->where('id', $userid)->with(
+            'subjects_1.departments',
+            'subjects_2.departments',
+            'subjects_3.departments',
+            'subject_1_courses',
+            'subject_2_courses',
+            'subject_3_courses')->first();
+
+        return view('student.forms.endexam',['pageSlug' => 'student.form.endexam','students'=>$student]);
     }
 
     public function endexamstore(){

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid mt--7">
     <div class="row">
-        <div class="col-xl-4  order-xl-1">
+        <div class="col-xl-8  order-xl-1">
             <div class="card">
                 <div class="card-header">
                     <div class="row align-items-center">
@@ -16,7 +16,7 @@
                     <form method="post" action="{{ route('dashboard.endexam.store') }}" autocomplete="off">
                         @csrf
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group{{ $errors->has('full_name') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-name">{{ __('Full Name') }}</label>
                                     <input type="text" name="full_name" id="input-full_name" class="form-control form-control-alternative{{ $errors->has('full_name') ? ' is-invalid' : '' }}" placeholder="{{ __('Full Name (IN BLOCK CAPITAL)') }}" value="{{ old('full_name') }}" required autofocus>
@@ -58,6 +58,10 @@
                                     <input type="text" name="date_of_payment" class="form-control{{ $errors->has('date_of_payment') ? ' is-invalid' : '' }}" placeholder="{{ _('Date of Payment') }}" value="{{ old('date_of_payment') }}">
                                     @include('alerts.feedback', ['field' => 'date_of_payment'])
                                 </div>
+                            </div>
+                            <div class="col-md-6">
+                                test
+                                {{_($students)}}
                             </div>
                         </div>
 
