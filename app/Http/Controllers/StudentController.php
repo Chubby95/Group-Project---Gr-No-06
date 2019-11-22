@@ -113,7 +113,22 @@ class StudentController extends Controller
         return view('student.forms.renew',['pageSlug' => 'student.form.renew']);
     }
 
-    public function renewstore(){
+    public function renewstore(Request $request){
+        $renewForm="";
+        if ($request->has('bank_slip')) {
+            // Get image file
+            $image = $request->file('bank_slip');
+            // Make a image name based on user name and current timestamp
+            $name = Str::slug($request->input('name')).'_'.time();
+            // Define folder path
+            $folder = '/uploads/images/';
+            // Make a file path where image will be stored [ folder path + file name + file extension]
+            $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+            // Upload image
+            $this->uploadOne($image, $folder, 'public', $name);
+            // Set user profile image path in database to filePath
+            $renewForm->bank_slip = $filePath;
+        }
         return redirect()->route('student.forms.renew')->withStatus(__('User successfully deleted.'));
     }
 
@@ -129,7 +144,7 @@ class StudentController extends Controller
        
         $user = auth()->user()->roles()->first();
         $userid = $user->pivot->user_id;
-        $student = $studentDetails->where('id', $userid)->with(
+        $student = $studentDetails->where('users_id', $userid)->with(
             'subjects_1.departments',
             'subjects_2.departments',
             'subjects_3.departments',
