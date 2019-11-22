@@ -9,7 +9,7 @@
                 <h2 class="card-title">Departments</h2>
             </div>
             <div class="card-body">
-                <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> {{  }}</h3>
+                <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> </h3>
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
                 <h2 class="card-title">Lectures</h2>
             </div>
             <div class="card-body">
-                <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> {{  }}</h3>
+                <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> </h3>
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@
                 <h2 class="card-title">Courses</h2>
             </div>
             <div class="card-body">
-                <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> {{  }}</h3>
+                <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> </h3>
             </div>
         </div>
     </div>
@@ -42,13 +42,9 @@
                 <h2 class="card-title">Students</h2>
             </div>
             <div class="card-body">
-                <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> {{  }}</h3>
+                <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> </h3>
             </div>
         </div>
     </div>
 </div>
 @endsection
-
-@push('js')
-
-@endpush

@@ -127,8 +127,8 @@ class StudentController extends Controller
 
     public function endexam(StudentDetails $studentDetails){
        
-        $user = auth()->user()->roles()->get();
-        $userid = $user[0]->pivot->user_id;
+        $user = auth()->user()->roles()->first();
+        $userid = $user->pivot->user_id;
         $student = $studentDetails->where('id', $userid)->with(
             'subjects_1.departments',
             'subjects_2.departments',
@@ -136,6 +136,7 @@ class StudentController extends Controller
             'subject_1_courses',
             'subject_2_courses',
             'subject_3_courses')->first();
+
 
         return view('student.forms.endexam',['pageSlug' => 'student.form.endexam','students'=>$student]);
     }
