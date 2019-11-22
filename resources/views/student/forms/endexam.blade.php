@@ -60,7 +60,15 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                {{_($student)}}
+                            <div class="form-group{{ $errors->has('stu_form_type') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="stu_form_type">{{ __('Student Form Type') }}</label>
+                                    <select name="stu_form_type" id="stu_form_type" class="form-control form-control-alternative" required>
+                                        <option value="">Select Form Type</option>
+                                        <option value="Proper">Proper</option>
+                                        <option value="Repeat">Repeat</option>
+                                    </select>
+                                    @include('alerts.feedback', ['field' => 'stu_form_type'])
+                                </div>
                             </div>
                         </div>
 

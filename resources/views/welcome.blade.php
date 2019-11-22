@@ -5,11 +5,9 @@
     <div class="container">
         <div class="header-body text-center mb-7">
             <div class="row justify-content-center">
-                <div class="col-lg-5 col-md-6">
+                <div class="col-md-12">
                     <div class="content">
-                        <div class="title m-b-md">
-                            <h1>University Of Jaffna</h1>
-                        </div>
+                        <h1 class="title m-b-md">University Of Jaffna</h1>
 
                         <div class="links">
                             <p>Form Template Generator</p>
