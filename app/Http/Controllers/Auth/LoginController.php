@@ -28,9 +28,9 @@ class LoginController extends Controller
      * @var string
      */
     public function redirectTo(){
-        $role = Auth::user()->roles()->get();
+        $role = Auth::user()->roles()->first();
 
-        switch ($role[0]['roleType']) {
+        switch ($role['roleType']) {
             case 'student':
                     return 'dashboard';
                 break;

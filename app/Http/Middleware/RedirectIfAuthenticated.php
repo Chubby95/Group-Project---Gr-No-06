@@ -22,23 +22,23 @@ class RedirectIfAuthenticated
 
             switch ($role[0]['roleType']) {
                 case 'student':
-                        return 'dashboard';
-                    break;
-                case 'dean':
-                        return 'home';
-                    break;
-                case 'dean-office-clark':
-                        return 'clark/dashboard';
-                    break;
-                case 'head-of-the-department':
-                        return 'hod/dashboard';
-                    break; 
-                case 'admin':
-                        return 'admin';
-                    break; 
-                default:
-                        return 'login'; 
-                    break;
+                    return 'dashboard';
+                break;
+            case 'dean':
+                    return 'home';
+                break;
+            case 'dean-office-clark':
+                    return 'clark/dashboard';
+                break;
+            case 'head-of-the-department':
+                    return 'hod/dashboard';
+                break; 
+            case 'admin':
+                    return 'admin';
+                break; 
+            default:
+                    return 'login'; 
+                break;
             }
         }
 

@@ -2,7 +2,7 @@
 
 <body class="white-content {{ $class ?? '' }}">
     @auth()
-    <div class="wrapper">
+    <div id="app" class="wrapper">
         
         <div class="main-panel">
             @include('layouts.navbars.navbar')

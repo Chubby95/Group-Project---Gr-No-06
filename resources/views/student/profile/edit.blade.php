@@ -20,58 +20,74 @@
                             {{ _('Student') }}
                         </p>
                         <p class="description">
-                            {{ _('Registration Number') }} {{ _($student->stu_register_no) }}
+                            {{ _('Registration Number') }} @if($student) {{ _($student->stu_register_no) }} @endif
                         </p>
                         <p class="description">
-                            {{ _('Index Number') }} {{ _($student->stu_index_no) }}
+                            {{ _('Index Number') }} @if($student) {{ _($student->stu_index_no) }} @endif
                         </p>
                         <p class="description">
-                            {{ _('Address') }} {{ _($student->stu_address_perment) }}
+                            {{ _('Address') }} @if($student) {{ _($student->stu_address_perment) }} @endif
                         </p>
                     </div>
                 </p>
                 <div class="row">
                     <div class="col-md-6">
                         <label>Departments</label>
+
+                        @if($student)
                         <ul>
                             <li>{{_($student->subjects_1->departments->department_name)}}</li>
                             <li>{{_($student->subjects_2->departments->department_name)}}</li>
                             <li>{{_($student->subjects_3->departments->department_name)}}</li>
                         </ul>
+                        @endif
                         <label>Fallowing Subjects</label>
+                        @if($student)
                         <ul>
                             <li>{{_($student->subjects_1->Title)}}</li>
                             <li>{{_($student->subjects_2->Title)}}</li>
                             <li>{{_($student->subjects_3->Title)}}</li>
                         </ul>
+                        @endif
                         <label>Styding Level</label>
+                        @if($student)
                         <ul>
                             <li>{{_($student->stu_styding_year)}}</li>
                         </ul>
+                        @endif
                     </div>
                     <div class="col-md-6">
                         <label>Gender</label>
+                        @if($student)
                         <ul>
                             <li>{{_($student->stu_gender)}}</li>
                         </ul>
+                        @endif
                         <label>Address in Jaffna</label>
+                        @if($student)
                         <ul>
                             <li>{{_($student->stu_address_jaffna)}}</li>
                         </ul>
+                        @endif
                         <label>Contact Details</label>
+                        @if($student)
                         <ul>
                             <li>{{_($student->stu_mobile)}}</li>
                         </ul>
+                        @endif
                         <label>Email</label>
+                        @if($student)
                         <ul>
                             <li>{{_(auth()->user()->email)}}</li>
                         </ul>
+                        @endif
                     </div>
                 </div>
                 <div class="row">
                     <label>Fallowing Courses</label>
                     <div class="col-sm-12">
                         <div class="row">
+                            @if($student)
                             <ul>
                                 <label>{{_($student->subjects_1->departments->department_name)}}</label>
                                 <li>
@@ -105,6 +121,7 @@
                                     </ul>
                                 </li>
                             </ul>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -147,6 +164,9 @@
             </form>
         </div>
     </div>
+    @if($student)
+
+    @endif
     <div class="col-md-8">
         <div class="card">
             <div class="card-header">
@@ -162,7 +182,7 @@
                         <div class="col-md-6">
                             <div class="form-group{{ $errors->has('stu_prefix') ? ' has-danger' : '' }}">
                                 <label class="form-control-label" for="stu_prefix">{{ __('') }}</label>
-                                <select name="stu_prefix" id="stu_prefix" class="form-control form-control-alternative" value="{{ old('stu_prefix', $student->stu_prefix) }}" required>
+                                <select name="stu_prefix" id="stu_prefix" class="form-control form-control-alternative" @if($student) value="{{ old('stu_prefix', $student->stu_prefix) }}" @endif required>
                                     <option value="">Select Prefix</option>
                                     <option value="Mr">Mr</option>
                                     <option value="Mrs">Mrs</option>
@@ -172,28 +192,28 @@
                             </div>
                             <div class="form-group{{ $errors->has('stu_address_jaffna') ? ' has-danger' : '' }}">
                                 <label>{{ _('Student Full Name') }}</label>
-                                <input type="text" name="stu_full_name" class="form-control{{ $errors->has('stu_full_name') ? ' is-invalid' : '' }}" placeholder="{{ _('Student Full Name') }}" value="{{ old('stu_full_name', $student->stu_full_name) }}">
+                                <input type="text" name="stu_full_name" class="form-control{{ $errors->has('stu_full_name') ? ' is-invalid' : '' }}" placeholder="{{ _('Student Full Name') }}" @if($student) value="{{ old('stu_full_name', $student->stu_full_name) }}" @endif>
                                 @include('alerts.feedback', ['field' => 'stu_full_name'])
                             </div>
                             <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                 <label>{{ _('Name') }}</label>
-                                <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ _('Name') }}" value="{{ old('name', auth()->user()->name) }}">
+                                <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ _('Name') }}" @if($student) value="{{ old('name', auth()->user()->name) }}" @endif>
                                 @include('alerts.feedback', ['field' => 'name'])
                             </div>
                             <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                                 <label>{{ _('Email address') }}</label>
-                                <input disabled type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ _('Email address') }}" value="{{ old('email', auth()->user()->email) }}">
+                                <input disabled type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ _('Email address') }}" @if($student) value="{{ old('email', auth()->user()->email) }}" @endif>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group{{ $errors->has('stu_address_jaffna') ? ' has-danger' : '' }}">
                                 <label>{{ _('Student Address In Jaffna') }}</label>
-                                <input type="text" name="stu_address_jaffna" class="form-control{{ $errors->has('stu_address_jaffna') ? ' is-invalid' : '' }}" placeholder="{{ _('Student Address In Jaffna') }}" value="{{ old('stu_address_jaffna', $student->stu_address_jaffna) }}">
+                                <input type="text" name="stu_address_jaffna" class="form-control{{ $errors->has('stu_address_jaffna') ? ' is-invalid' : '' }}" placeholder="{{ _('Student Address In Jaffna') }}" @if($student) value="{{ old('stu_address_jaffna', $student->stu_address_jaffna) }}" @endif>
                                 @include('alerts.feedback', ['field' => 'stu_address_jaffna'])
                             </div>
                             <div class="form-group{{ $errors->has('stu_address_perment') ? ' has-danger' : '' }}">
                                 <label>{{ _('Student Permenent Address') }}</label>
-                                <input type="text" name="stu_address_perment" class="form-control{{ $errors->has('stu_address_perment') ? ' is-invalid' : '' }}" placeholder="{{ _('Student Permenent Address') }}" value="{{ old('stu_address_perment', $student->stu_address_perment) }}">
+                                <input type="text" name="stu_address_perment" class="form-control{{ $errors->has('stu_address_perment') ? ' is-invalid' : '' }}" placeholder="{{ _('Student Permenent Address') }}" @if($student) value="{{ old('stu_address_perment', $student->stu_address_perment) }}" @endif>
                                 @include('alerts.feedback', ['field' => 'stu_address_perment'])
                             </div>
                         </div>
@@ -214,7 +234,7 @@
                         <div class="col-md-3">
                             <div class="form-group{{ $errors->has('stu_mobile') ? ' has-danger' : '' }}">
                                 <label>{{ _('Student Mobile No') }}</label>
-                                <input type="text" name="stu_mobile" class="form-control{{ $errors->has('stu_mobile') ? ' is-invalid' : '' }}" placeholder="{{ _('Student Mobile No') }}" value="{{ old('stu_mobile', $student->stu_mobile) }}">
+                                <input type="text" name="stu_mobile" class="form-control{{ $errors->has('stu_mobile') ? ' is-invalid' : '' }}" placeholder="{{ _('Student Mobile No') }}" @if($student) value="{{ old('stu_mobile', $student->stu_mobile) }}" @endif>
                                 @include('alerts.feedback', ['field' => 'stu_mobile'])
                             </div>
                         </div>
@@ -225,14 +245,14 @@
                                 <div class="col-md-6">
                                     <div class="form-group{{ $errors->has('stu_index_no') ? ' has-danger' : '' }}">
                                         <label>{{ _('Student Index No') }}</label>
-                                        <input type="text" name="stu_index_no" class="form-control{{ $errors->has('stu_index_no') ? ' is-invalid' : '' }}" placeholder="{{ _('Student Index No') }}" value="{{ old('stu_index_no', $student->stu_index_no) }}">
+                                        <input type="text" name="stu_index_no" class="form-control{{ $errors->has('stu_index_no') ? ' is-invalid' : '' }}" placeholder="{{ _('Student Index No') }}" @if($student) value="{{ old('stu_index_no', $student->stu_index_no) }}" @endif>
                                         @include('alerts.feedback', ['field' => 'stu_index_no'])
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group{{ $errors->has('stu_register_no') ? ' has-danger' : '' }}">
                                         <label>{{ _('Student Registration No') }}</label>
-                                        <input type="text" name="stu_register_no" class="form-control{{ $errors->has('stu_register_no') ? ' is-invalid' : '' }}" placeholder="{{ _('Student Registration No') }}" value="{{ old('stu_register_no', $student->stu_register_no) }}">
+                                        <input type="text" name="stu_register_no" class="form-control{{ $errors->has('stu_register_no') ? ' is-invalid' : '' }}" placeholder="{{ _('Student Registration No') }}" @if($student) value="{{ old('stu_register_no', $student->stu_register_no) }}" @endif>
                                         @include('alerts.feedback', ['field' => 'stu_register_no'])
                                     </div>
                                 </div>
@@ -287,7 +307,7 @@
                                 </select>
                                 @include('alerts.feedback', ['field' => 'stu_subject_3'])
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
