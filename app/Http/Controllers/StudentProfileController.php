@@ -25,8 +25,8 @@ class StudentProfileController extends Controller
 
     public function edit(Subjects $subjects, StudentDetails $studentDetails)
     {
-        $user = auth()->user()->roles()->get();
-        $userid = $user[0]->pivot->user_id;
+        $user = auth()->user()->roles()->first();
+        $userid = $user->pivot->user_id;
         $student = $studentDetails->where('id', $userid)->with(
             'subjects_1.departments',
             'subjects_2.departments',
