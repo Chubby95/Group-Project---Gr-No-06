@@ -3,7 +3,47 @@
 @section('content')
 <div class="container-fluid mt--7">
     <div class="row">
-        <div class="col-xl-4  order-xl-1">
+        <div class="col-xl-8  order-xl-1">
+        <h1>guidelines for category</h1>
+        <table>       
+        <tr> 
+            <td>P</td>
+            <td>Proper Sitting following the  course unit in the current accademic year</td>
+        </tr>
+        <tr> 
+            <td>1R</td>
+            <td>Repeating the course unit as first attempt(e.g.medical certificate,etc</br>
+            Copy of the Senate approval letter shoud be annexed
+            </td>
+        </tr>
+        <tr> 
+            <td>2R</td>
+            <td>Repeating the course unit as second attempt</td>
+        </tr>
+        <tr> 
+            <td>#R</td>
+            <td>Repeating the course unit as third attempt</td>
+        </tr>
+    
+        </table>
+        
+        </br>
+        <h1>Examition Fee</h1>
+        <h2>Applying under category 1R/2R/3R should annex payment of receipt</br>
+        (Rs.250/- for a course unit)
+        </h2>
+
+        <h1>OTHER INFORMATION</h1>
+        <h2>**Attendance details will be collected from the respective head of department by the Dean's office.</h2>
+        <h2>**If a student does not satisfy the attendance requirement in any course unit(s),</br>
+        he/or she will not be permitted to sit ECE of such course unit(s).
+        </h2>
+        <h2>**Repeat candidate should get the initial of the respective Heads of departments for each repeting course unit.</h2>
+
+        
+        
+        
+           
             <div class="card">
                 <div class="card-header">
                     <div class="row align-items-center">
@@ -68,6 +108,7 @@
                 </div>
             </div>
         </div>
+            
     </div>
 </div>
 @endsection
